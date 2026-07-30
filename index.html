@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cristian Bran — Analista de Inteligencia de Negocios & IA aplicada</title>
-<meta name="description" content="Portafolio de Cristian Camilo Bran Arriaga: de infraestructura de redes a inteligencia de negocios y datos, con formación reciente en IA aplicada.">
+<meta name="description" content="Soy Cristian Camilo Bran Arriaga: paso de infraestructura de redes a inteligencia de negocios y datos, con formación reciente en IA aplicada.">
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -13,7 +13,7 @@
 <!-- Open Graph (WhatsApp, LinkedIn, Facebook) -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Cristian Bran — Redes, datos e IA aplicada">
-<meta property="og:description" content="Portafolio de Cristian Camilo Bran Arriaga: de infraestructura de redes a inteligencia de negocios y datos, con formación reciente en IA aplicada.">
+<meta property="og:description" content="Soy Cristian Camilo Bran Arriaga: paso de infraestructura de redes a inteligencia de negocios y datos, con formación reciente en IA aplicada.">
 <meta property="og:image" content="https://portafolio-cristian-bran.vercel.app/og-image.png">
 <meta property="og:url" content="https://portafolio-cristian-bran.vercel.app/">
 <meta property="og:locale" content="es_CO">
@@ -21,7 +21,7 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Cristian Bran — Redes, datos e IA aplicada">
-<meta name="twitter:description" content="Portafolio de Cristian Camilo Bran Arriaga: de infraestructura de redes a inteligencia de negocios y datos, con formación reciente en IA aplicada.">
+<meta name="twitter:description" content="Soy Cristian Camilo Bran Arriaga: paso de infraestructura de redes a inteligencia de negocios y datos, con formación reciente en IA aplicada.">
 <meta name="twitter:image" content="https://portafolio-cristian-bran.vercel.app/og-image.png">
 
 <link rel="canonical" href="https://portafolio-cristian-bran.vercel.app/">
@@ -226,19 +226,26 @@
   }
   .about-text .now .k{color:var(--amber);}
   .skill-panel{background:var(--panel); border:1px solid var(--line); padding:26px; box-shadow:0 4px 24px rgba(23,32,51,0.06); border-radius:6px;}
-  .skill-group{margin-bottom:24px;}
+  .skill-group{margin-bottom:26px;}
   .skill-group:last-child{margin-bottom:0;}
   .skill-group h4{
     font-family:'IBM Plex Mono',monospace; font-size:11.5px; text-transform:uppercase; letter-spacing:0.08em;
-    color:var(--muted); margin:0 0 12px;
+    color:var(--muted); margin:0 0 16px;
   }
-  .chip-row{display:flex; flex-wrap:wrap; gap:8px;}
-  .chip{
-    font-family:'IBM Plex Mono',monospace; font-size:12px; padding:6px 11px;
-    border:1px solid var(--line); border-radius:20px; color:#3A4A63;
-    transition:border-color .2s, color .2s, transform .2s;
+  .skill-item{margin-bottom:14px;}
+  .skill-item:last-child{margin-bottom:0;}
+  .skill-item-head{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px; gap:10px;}
+  .skill-item-head .name{font-size:13.5px; color:var(--paper); font-weight:600;}
+  .skill-item-head .level{
+    font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--signal); flex-shrink:0;
   }
-  .chip:hover{border-color:var(--signal); color:var(--signal); transform:translateY(-2px);}
+  .skill-bar{height:6px; background:var(--panel-2); border-radius:4px; overflow:hidden;}
+  .skill-bar-fill{
+    height:100%; width:0%; border-radius:4px;
+    background:linear-gradient(90deg, var(--signal-dim), var(--signal));
+    transition:width 1.1s cubic-bezier(.16,1,.3,1);
+  }
 
   .timeline{position:relative; margin-top:8px;}
   .timeline::before{
@@ -284,6 +291,42 @@
   }
   .cert-subhead:first-of-type{margin-top:0;}
   .cert-subhead::after{content:''; flex:1; height:1px; background:var(--line);}
+
+  /* ── carrusel de proyectos académicos ── */
+  .carousel-wrap{position:relative;}
+  .carousel-track{
+    display:flex; gap:18px; overflow-x:auto; scroll-snap-type:x mandatory;
+    padding:4px 4px 16px; scrollbar-width:thin; scrollbar-color:var(--signal-dim) transparent;
+  }
+  .carousel-track::-webkit-scrollbar{height:6px;}
+  .carousel-track::-webkit-scrollbar-thumb{background:var(--signal-dim); border-radius:6px;}
+  .project-card{
+    flex:0 0 280px; scroll-snap-align:start; background:var(--panel); border:1px solid var(--line);
+    border-radius:6px; padding:22px; display:flex; flex-direction:column; box-shadow:0 4px 24px rgba(23,32,51,0.05);
+  }
+  .project-card.placeholder{border-style:dashed; background:var(--panel-2);}
+  .project-card .cert-tag{margin-bottom:12px;}
+  .project-card h4{font-size:15.5px; margin:0 0 8px; color:var(--paper); line-height:1.35;}
+  .project-card p{font-size:13.5px; color:var(--muted); margin:0 0 18px; flex:1;}
+  .project-link{
+    display:inline-flex; align-items:center; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:12.5px;
+    color:var(--signal); text-decoration:none; border:1px solid var(--line); padding:9px 14px; border-radius:4px;
+    transition:border-color .2s, background .2s, transform .2s; width:fit-content;
+  }
+  .project-link:hover{border-color:var(--signal); background:rgba(46,90,172,0.06); transform:translateY(-2px);}
+  .project-link.disabled{color:var(--muted); cursor:default; pointer-events:none;}
+  .carousel-btn{
+    position:absolute; top:50%; transform:translateY(-50%); background:var(--panel); border:1px solid var(--line);
+    border-radius:50%; width:38px; height:38px; cursor:pointer; z-index:2; font-size:18px; color:var(--signal);
+    display:flex; align-items:center; justify-content:center; box-shadow:0 4px 14px rgba(23,32,51,0.1);
+    transition:background .2s, transform .2s;
+  }
+  .carousel-btn:hover{background:var(--panel-2); transform:translateY(-50%) scale(1.08);}
+  .carousel-btn.prev{left:-18px;}
+  .carousel-btn.next{right:-18px;}
+  @media (max-width:700px){
+    .carousel-btn{display:none;}
+  }
   .cert-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:18px; margin-bottom:8px;}
   .cert-card{
     background:var(--panel); border:1px solid var(--line); padding:22px; position:relative; overflow:hidden;
@@ -327,12 +370,13 @@
 
 <header class="site">
   <nav>
-    <div class="brand"><span class="dot"></span> Cristian Camilo Bran Arriaga <span style="color:var(--muted); font-weight:400;">// Portafolio</span></div>
+    <div class="brand"><span class="dot"></span> CRISTIAN BRAN <span style="color:var(--muted); font-weight:400;">// mi trabajo</span></div>
     <button class="navtoggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">☰</button>
     <ul class="navlinks" id="navLinks">
       <li><a href="#sobre-mi">Sobre mí</a></li>
       <li><a href="#trayectoria">Trayectoria</a></li>
       <li><a href="#formacion">Formación</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
       <li><a href="#certificaciones">Certificaciones</a></li>
       <li><a href="#habilidades">Habilidades</a></li>
       <li><a href="#contacto">Contacto</a></li>
@@ -346,8 +390,8 @@
     <div class="hero-grid">
       <div>
         <div class="eyebrow">Medellín, Colombia · Disponible para nuevos retos</div>
-        <h1>Cristian Bran<br><span class="accent">construye puentes entre redes, datos e IA.</span></h1>
-        <p class="hero-lede">Ingeniero en Telecomunicaciones convertido en Analista de Inteligencia de Negocios. Empecé sosteniendo servidores en pie; hoy convierto esos mismos datos en tableros, cruces y decisiones — y desde 2025 sumé IA generativa, cloud y ciencia de datos al stack.</p>
+        <h1>Soy Cristian Bran.<br><span class="accent">Construyo puentes entre redes, datos e IA.</span></h1>
+        <p class="hero-lede">Soy Ingeniero en Telecomunicaciones convertido en Analista de Inteligencia de Negocios. Empecé sosteniendo la infraestructura que mantiene los sistemas en pie; hoy traduzco esos mismos datos en dashboards interactivos que aceleran decisiones financieras, de auditoría y de gestión del riesgo en salud — y desde 2025 sumé IA generativa, cloud y ciencia de datos a mi caja de herramientas.</p>
         <div class="cta-row">
           <a href="#trayectoria" class="btn btn-primary">Ver trayectoria</a>
           <a href="#contacto" class="btn btn-ghost">Contactar</a>
@@ -377,7 +421,7 @@
           </g>
           <g class="topo-node active">
             <circle cx="225" cy="60" r="24"/>
-            <text x="225" y="57" text-anchor="middle">INFRAESTRUCTURA</text>
+            <text x="225" y="57" text-anchor="middle">INFRA</text>
             <text x="225" y="68" text-anchor="middle" class="sub">2023–25</text>
           </g>
           <g class="topo-node active">
@@ -399,38 +443,88 @@
   <section id="sobre-mi">
     <div class="eyebrow">Sobre mí</div>
     <h2>Versátil por oficio, curioso por convicción</h2>
-    <p class="section-sub">Un perfil técnico que ha crecido subiendo capas: de la infraestructura que sostiene los sistemas, a los datos que salen de ellos, a la IA que hoy los interpreta.</p>
+    <p class="section-sub">Soy un perfil técnico que ha crecido subiendo capas: de la infraestructura que sostiene los sistemas, a los datos que salen de ellos, a la IA que hoy interpreto.</p>
     <div class="about-grid">
       <div class="about-text">
-        <p>Soy una persona versátil, capaz de simultanear varias tareas y de adaptarme rápido a entornos nuevos. Empecé mi carrera en soporte técnico y redes, pasé por infraestructura de servidores y hoy trabajo generando inteligencia de negocio a partir de los datos de salud de una EPS.</p>
-        <p>Me caracteriza la facilidad para el trabajo en equipo y el entusiasmo genuino por seguir aprendiendo. Entre 2025 y 2026 llevé eso a la práctica: completé una especialización en Big Data & BI, formación en AWS e IA con Platzi, y cinco cursos aplicados de inteligencia artificial — desde IA generativa hasta legalidad de datos en publicidad digital.</p>
+        <p>Soy una persona versátil, capaz de simultanear varias tareas y de adaptarme rápido a entornos nuevos. No llegué a los datos por casualidad: empecé resolviendo incidentes de red en llamada, después sostuve la infraestructura que mantiene los sistemas críticos en pie, y hoy uso ese mismo conocimiento de extremo a extremo para explicar de dónde viene cada cifra que pongo en un tablero — algo que a otros analistas les toma años entender.</p>
+        <p>Mi trabajo no termina en "crear un tablero". Lo que resuelvo es más concreto: convertir información dispersa entre bases de datos, autorizaciones y trámites médicos en dashboards interactivos que un auditor, un área financiera o un líder de riesgo en salud pueden usar para decidir sin tener que pedirme explicaciones adicionales. Eso implica escribir la consulta correcta en SQL, automatizar el cruce en Python cuando el proceso manual ya no escala, y diseñar la visualización pensando en quién la va a leer, no solo en que se vea bien.</p>
+        <p>Me caracteriza la facilidad para el trabajo en equipo y el entusiasmo genuino por seguir aprendiendo. Entre 2025 y 2026 llevé eso a la práctica: completé una especialización en Big Data & BI, formación en AWS e IA con Platzi, y cinco cursos aplicados de inteligencia artificial — desde IA generativa hasta legalidad de datos en publicidad digital — porque entiendo que un dashboard sin automatización ni contexto de negocio tiene un techo bajo.</p>
         <div class="now">
-          <span class="k">// actualmente</span> — Analista de Inteligencia de Negocios en Savia Salud EPS, construyendo tableros estratégicos en Power BI y cruzando datos de MySQL/MariaDB/PostgreSQL con Python.
+          <span class="k">// actualmente</span> — Analista de Inteligencia de Negocios en Savia Salud EPS, construyendo dashboards estratégicos en Power BI que sostienen decisiones de auditoría y riesgo en salud, y cruzando datos de MySQL/MariaDB con Python.
         </div>
       </div>
       <div class="skill-panel tilt-card">
         <div class="skill-group">
           <h4>Datos & BI</h4>
-          <div class="chip-row">
-            <span class="chip">Power BI</span><span class="chip">SQL (MySQL/MariaDB)</span>
-            <span class="chip">Python</span><span class="chip">Airflow</span>
-            <span class="chip">GitHub</span><span class="chip">Trello</span>
+          <div class="skill-item">
+            <div class="skill-item-head"><span class="name">Power BI</span><span class="level">Avanzado</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-target="92"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-item-head"><span class="name">SQL (MySQL / MariaDB)</span><span class="level">Avanzado</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-target="88"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-item-head"><span class="name">Python (cruces de datos)</span><span class="level">Intermedio</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-target="65"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-item-head"><span class="name">Airflow</span><span class="level">Intermedio</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-target="55"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-item-head"><span class="name">GitHub / Trello</span><span class="level">Intermedio</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-target="60"></div></div>
           </div>
         </div>
         <div class="skill-group">
           <h4>Infraestructura & Redes</h4>
-          <div class="chip-row">
-            <span class="chip">Administración de AD</span><span class="chip">VPN Fortigate</span>
-            <span class="chip">DRP & Backups</span><span class="chip">Redes MPLS</span>
-            <span class="chip">BMC Remedy</span><span class="chip">Google Workspace</span>
+          <div class="skill-item">
+            <div class="skill-item-head"><span class="name">Administración de AD</span><span class="level">Avanzado</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-target="85"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-item-head"><span class="name">Redes MPLS</span><span class="level">Avanzado</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-target="85"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-item-head"><span class="name">VPN Fortigate</span><span class="level">Avanzado</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-target="82"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-item-head"><span class="name">DRP & Backups</span><span class="level">Avanzado</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-target="80"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-item-head"><span class="name">BMC Remedy</span><span class="level">Avanzado</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-target="78"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-item-head"><span class="name">Google Workspace</span><span class="level">Intermedio</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-target="60"></div></div>
           </div>
         </div>
         <div class="skill-group">
-          <h4>IA & Cloud (2025–2026)</h4>
-          <div class="chip-row">
-            <span class="chip">AWS · Cómputo & BD</span><span class="chip">IA generativa · Gemini</span>
-            <span class="chip">Automatización & bots</span><span class="chip">Ciencia de datos</span>
-            <span class="chip">Visualización de datos</span>
+          <h4>Cloud & IA aplicada (2025–2026)</h4>
+          <div class="skill-item">
+            <div class="skill-item-head"><span class="name">Visualización de datos</span><span class="level">Avanzado</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-target="85"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-item-head"><span class="name">IA generativa (Gemini)</span><span class="level">Intermedio</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-target="55"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-item-head"><span class="name">Automatización & bots</span><span class="level">Intermedio</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-target="50"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-item-head"><span class="name">AWS (Cómputo / Almacenamiento / BD)</span><span class="level">Básico–Intermedio</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-target="45"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-item-head"><span class="name">Ciencia de datos</span><span class="level">Básico</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-target="40"></div></div>
           </div>
         </div>
       </div>
@@ -440,7 +534,7 @@
   <section id="trayectoria">
     <div class="eyebrow">Trayectoria profesional</div>
     <h2>Registro de experiencia</h2>
-    <p class="section-sub">Seis años consecutivos en tecnología, con una transición deliberada de soporte y redes hacia análisis de datos.</p>
+    <p class="section-sub">Llevo seis años consecutivos en tecnología, con una transición deliberada de soporte y redes hacia análisis de datos.</p>
 
     <div class="timeline" id="timeline">
       <div class="tl-item">
@@ -449,7 +543,7 @@
         <div class="tl-body tilt-card">
           <div class="tl-role">Analista de Inteligencia de Negocios</div>
           <div class="tl-org">Savia Salud EPS</div>
-          <p class="tl-desc">Genero informes estandarizados y personalizados sobre datos de la organización (Cuentas médicas, Autorizaciones, MIPRES, Riesgo en salud, PQRS, Tutelas). Creo queries para MySQL, MariaDB y PostgreSQL. Creo scripts en Python para cruces de datos. Creo tableros estratégicos y operativos en Power BI para la toma de decisiones. Apoyo la extracción de información para entes de control. Uso de herramientas de scrum Jira y Trello. Administrador de Consola Airflow y automatización de procesos. Administrador de consola Azure donde creo usuarios y asigno licencias de PowerBI. Administrador de consola PowerBI para cargue y monitoreo de ejecuciones de modelos semanticos. </p>
+          <p class="tl-desc">Traduzco los datos operativos y clínicos de la EPS —cuentas médicas, autorizaciones, MIPRES, riesgo en salud, PQRS y tutelas— en informes y <strong>dashboards interactivos en Power BI que agilizan la toma de decisiones financieras, de auditoría y de gestión del riesgo en salud</strong>. Escribo consultas en MySQL y MariaDB para consolidar información dispersa entre sistemas, y desarrollo scripts en Python que automatizan cruces de datos que antes se hacían manualmente, reduciendo los tiempos de entrega de información a entes de control. Doy soporte continuo a los tableros que construyo, ajustándolos a medida que cambian las necesidades del negocio, y organizo el trabajo del equipo con GitHub, Trello y Airflow para que los procesos de datos queden documentados y sean repetibles.</p>
         </div>
       </div>
 
@@ -459,7 +553,7 @@
         <div class="tl-body tilt-card">
           <div class="tl-role">Analista de Infraestructura</div>
           <div class="tl-org">Savia Salud EPS</div>
-          <p class="tl-desc">Escalamientos de fallas de servidores con el proveedor Tigo, monitoreo y ampliación de recursos. Administración de AD y servidores (WS, Ubuntu, RedHat), Migración de servidores a la nube (On-premises a Tigo360 Cloud). Creación de tableros en Power BI sobre las funciones del área. Creación de DRP. Informes mensuales de disponibilidad y manejo de VPN Fortigate.</p>
+          <p class="tl-desc">Sostuve la disponibilidad de la infraestructura crítica que le da continuidad al negocio: gestioné escalamientos de fallas de servidores directamente con el proveedor Tigo, administré el Directorio Activo y lideré la migración de servidores a la nube, <strong>reduciendo el riesgo operativo de depender de infraestructura on-premise</strong>. Diseñé tableros en Power BI para dar visibilidad ejecutiva sobre la disponibilidad del centro de datos, y participé en la ejecución del DRP, garantizando que la organización pudiera recuperar sus sistemas críticos ante cualquier incidente. También administré la VPN Fortigate y mantuve actualizado el inventario de servidores — información que hoy sigue siendo la base de varios de mis análisis en BI.</p>
         </div>
       </div>
 
@@ -469,7 +563,7 @@
         <div class="tl-body tilt-card">
           <div class="tl-role">Agente Mesa de Servicios</div>
           <div class="tl-org">Savia Salud EPS</div>
-          <p class="tl-desc">Recepción de solicitudes vía chat, correo y teléfono, soporte técnico y diagnóstico de red HFC/FTT, escalamientos N2, creación de tableros en Power BI, administración de Google Workspace y seguimiento de tickets.</p>
+          <p class="tl-desc">Fui el primer punto de contacto para la resolución de incidentes técnicos de la organización, atendiendo solicitudes por chat, correo y teléfono, realizando diagnóstico de red HFC/FTT y escalando los casos más complejos a nivel N2. <strong>Construí los primeros tableros de seguimiento en Power BI para dar trazabilidad al volumen y tiempo de resolución de tickets</strong> — un ejercicio que terminó siendo la puerta de entrada a mi rol actual en inteligencia de negocios. También administré cuentas y recursos en Google Workspace y apoyé la coordinación de análisis de datos del equipo.</p>
         </div>
       </div>
 
@@ -479,7 +573,7 @@
         <div class="tl-body tilt-card">
           <div class="tl-role">Analista Nivel 1</div>
           <div class="tl-org">Supplies</div>
-          <p class="tl-desc">Soporte técnico a equipos portátiles y de escritorio, mantenimiento correctivo y preventivo, diagnóstico de cableado interno, instalación de sistema operativo y de VPN/antivirus.</p>
+          <p class="tl-desc">Garanticé la operatividad de los equipos de cómputo de la organización mediante mantenimiento correctivo y preventivo, gestión de inventario, validación de puntos de red y diagnóstico de cableado interno, <strong>minimizando el tiempo de inactividad de los usuarios finales</strong>. Configuré sistema operativo, VPN y antivirus corporativo en cada equipo entregado.</p>
         </div>
       </div>
 
@@ -489,7 +583,7 @@
         <div class="tl-body tilt-card">
           <div class="tl-role">Analista Mesa de Servicios</div>
           <div class="tl-org">Comware</div>
-          <p class="tl-desc">Soporte telefónico a técnicos en sitio sobre aperturas en la red MPLS de Tigo-Une (topologías en anillo y bus), instalación y retiro de servicios, y manejo de BMC Remedy, Fénix ATC, Service Desk, iMaster NCE y Siebel.</p>
+          <p class="tl-desc">Di soporte técnico especializado sobre la red MPLS del operador Tigo-Une, coordinando con técnicos en sitio la apertura, instalación y retiro de servicios en topologías de anillo y bus. Gestioné el ciclo de vida completo de los tickets en BMC Remedy, Fénix ATC, Service Desk, iMaster NCE y Siebel, <strong>asegurando la continuidad del servicio para los clientes finales del operador</strong>.</p>
         </div>
       </div>
 
@@ -499,7 +593,7 @@
         <div class="tl-body tilt-card">
           <div class="tl-role">Agente de Soporte Técnico</div>
           <div class="tl-org">Teleperformance</div>
-          <p class="tl-desc">Atención al cliente para resolver casos de navegación de internet en hogares y líneas móviles internacionales Orange y Jazztel.</p>
+          <p class="tl-desc">Resolví incidentes de conectividad a internet para clientes residenciales y líneas móviles internacionales (Orange y Jazztel) vía telefónica, <strong>desarrollando desde el inicio de mi carrera la capacidad de traducir problemas técnicos complejos en soluciones claras para el usuario final</strong> — una habilidad que hoy aplico al explicar datos a audiencias no técnicas.</p>
         </div>
       </div>
     </div>
@@ -508,7 +602,7 @@
   <section id="formacion">
     <div class="eyebrow">Formación académica</div>
     <h2>Base formal</h2>
-    <p class="section-sub">Cuatro etapas de estudio, cada una construida sobre la anterior.</p>
+    <p class="section-sub">Cursé cuatro etapas de estudio, cada una construida sobre la anterior.</p>
     <div class="edu-grid">
       <div class="edu-card tilt-card">
         <div class="yr">02/2025 – 01/2026</div>
@@ -529,11 +623,54 @@
     </div>
   </section>
 
+  <!-- PROYECTOS ACADÉMICOS -->
+  <section id="proyectos">
+    <div class="eyebrow">Proyectos académicos</div>
+    <h2>Trabajos y actividades de la universidad</h2>
+    <p class="section-sub">Aquí reúno los proyectos, informes y actividades que desarrollé durante mi formación — cada tarjeta enlaza directo al PDF. Desliza o usa las flechas para ver todos.</p>
+
+    <div class="carousel-wrap">
+      <button class="carousel-btn prev" id="projPrev" aria-label="Proyecto anterior">‹</button>
+      <div class="carousel-track" id="projectsTrack">
+
+        <div class="project-card placeholder tilt-card">
+          <span class="cert-tag">Redes & Telecomunicaciones</span>
+          <h4>Diseño de red de telecomunicaciones — proyecto de curso</h4>
+          <p>Espacio reservado. Sube el PDF a tu repositorio (por ejemplo en una carpeta <code>/proyectos</code>) y reemplaza el enlace de esta tarjeta.</p>
+          <a href="#" class="project-link disabled" aria-disabled="true">📄 Pendiente por vincular</a>
+        </div>
+
+        <div class="project-card placeholder tilt-card">
+          <span class="cert-tag">Big Data & BI</span>
+          <h4>Modelo de datos / tablero final — especialización</h4>
+          <p>Espacio reservado. Reemplaza el <code>href="#"</code> de esta tarjeta por la ruta real del PDF una vez lo subas.</p>
+          <a href="#" class="project-link disabled" aria-disabled="true">📄 Pendiente por vincular</a>
+        </div>
+
+        <div class="project-card placeholder tilt-card">
+          <span class="cert-tag">Proyecto de grado</span>
+          <h4>Trabajo de grado — Ingeniería en Telecomunicaciones</h4>
+          <p>Espacio reservado para tu proyecto de grado o informe final. Puedes agregar tantas tarjetas como proyectos quieras mostrar.</p>
+          <a href="#" class="project-link disabled" aria-disabled="true">📄 Pendiente por vincular</a>
+        </div>
+
+        <div class="project-card placeholder tilt-card">
+          <span class="cert-tag">Actividad de curso</span>
+          <h4>Informe / actividad adicional</h4>
+          <p>Duplica esta tarjeta por cada PDF nuevo que quieras agregar: cambia la categoría, el título, la descripción y el enlace.</p>
+          <a href="#" class="project-link disabled" aria-disabled="true">📄 Pendiente por vincular</a>
+        </div>
+
+      </div>
+      <button class="carousel-btn next" id="projNext" aria-label="Siguiente proyecto">›</button>
+    </div>
+  </section>
+
   <!-- CERTIFICACIONES -->
   <section id="certificaciones">
     <div class="eyebrow">Certificaciones 2025–2026</div>
     <h2>Lo que he aprendido</h2>
-    <p class="section-sub">Ocho cursos completados entre 2025 y 2026, en dos frentes: fundamentos de cloud, IA y visualización con Platzi, y cursos aplicados de IA generativa, automatización y legalidad digital.</p>
+    <p class="section-sub">Completé ocho cursos entre 2025 y 2026, en dos frentes: fundamentos de cloud, IA y visualización con Platzi, y cursos aplicados de IA generativa, automatización y legalidad digital.</p>
 
     <div class="cert-subhead">IA aplicada · 2026</div>
     <div class="cert-grid">
@@ -587,27 +724,27 @@
   <section id="habilidades">
     <div class="eyebrow">Habilidades técnicas</div>
     <h2>El stack completo</h2>
-    <p class="section-sub">Cuatro capas que se apoyan entre sí: la red que sostiene, los datos que informan, el cloud que escala, la IA que acelera.</p>
+    <p class="section-sub">Organizo mi stack en cuatro capas que se apoyan entre sí: la red que sostiene, los datos que informan, el cloud que escala, la IA que acelera.</p>
     <div class="edu-grid">
       <div class="edu-card tilt-card" style="border-top-color:var(--signal);">
         <div class="yr" style="color:var(--signal);">Capa 01</div>
         <h4>Redes & Infraestructura</h4>
-        <p class="tl-desc" style="margin-top:10px;">AD, VPN Fortigate, DRP, monitoreo de servidores, redes MPLS, BMC Remedy, Service Desk.</p>
+        <p class="tl-desc" style="margin-top:10px;">La base que me permite entender de dónde viene cada dato: AD, VPN Fortigate, DRP, monitoreo de servidores, redes MPLS, BMC Remedy, Service Desk.</p>
       </div>
       <div class="edu-card tilt-card" style="border-top-color:var(--signal);">
         <div class="yr" style="color:var(--signal);">Capa 02</div>
         <h4>Datos & BI</h4>
-        <p class="tl-desc" style="margin-top:10px;">Power BI, SQL (MySQL/MariaDB), Python para cruces de datos, Airflow, GitHub, Trello.</p>
+        <p class="tl-desc" style="margin-top:10px;">Convierto esos datos en decisiones: Power BI, SQL (MySQL/MariaDB), Python para automatizar cruces, Airflow, GitHub, Trello.</p>
       </div>
       <div class="edu-card tilt-card" style="border-top-color:var(--amber);">
         <div class="yr" style="color:var(--amber);">Capa 03</div>
         <h4>Cloud & IA aplicada</h4>
-        <p class="tl-desc" style="margin-top:10px;">AWS (cómputo, almacenamiento, BD), Gemini, GenAI intermedio, automatización con bots, ciencia de datos.</p>
+        <p class="tl-desc" style="margin-top:10px;">Lo que sumé para escalar y anticiparme: AWS (cómputo, almacenamiento, BD), Gemini, GenAI intermedio, automatización con bots, ciencia de datos.</p>
       </div>
       <div class="edu-card tilt-card" style="border-top-color:var(--amber);">
         <div class="yr" style="color:var(--amber);">Capa 04</div>
         <h4>Cumplimiento & ética digital</h4>
-        <p class="tl-desc" style="margin-top:10px;">Publicidad digital, uso de datos, transparencia e implicaciones legales de la IA.</p>
+        <p class="tl-desc" style="margin-top:10px;">Para que ninguna automatización se me salga de control: publicidad digital, uso de datos, transparencia e implicaciones legales de la IA.</p>
       </div>
     </div>
   </section>
@@ -615,21 +752,21 @@
   <section id="contacto">
     <div class="eyebrow">Contacto</div>
     <h2>Hablemos</h2>
-    <p class="section-sub">Abierto a conversar sobre roles en BI, datos, infraestructura o proyectos donde la IA aplicada sume valor.</p>
+    <p class="section-sub">Estoy abierto a conversar sobre roles en BI, datos, infraestructura o proyectos donde la IA aplicada sume valor.</p>
     <div class="contact-grid">
       <div class="contact-card tilt-card">
         <div class="contact-row"><div class="k">Correo</div><a class="v" href="mailto:ccbran1998@hotmail.com">ccbran1998@hotmail.com</a></div>
         <div class="contact-row"><div class="k">Teléfono</div><a class="v" href="tel:+573146139747">+57 314 613 9747</a></div>
-        <div class="contact-row"><div class="k">LinkedIn</div><a class="v" href="https://www.linkedin.com/in/cristian-camilo-bran-arriaga-b1074730b" target="_blank" rel="me noopener noreferrer">/Cristian Camilo Bran Arriaga</a></div>
+        <div class="contact-row"><div class="k">LinkedIn</div><a class="v" href="https://www.linkedin.com/in/cristian-camilo-bran-arriaga-b1074730b" target="_blank" rel="me noopener noreferrer">/cristian-camilo-bran-arriaga</a></div>
         <div class="contact-row"><div class="k">Ubicación</div><div class="v">Medellín, Colombia</div></div>
         <div class="contact-row"><div class="k">Estado</div><div class="v">Activo en Savia Salud EPS — abierto a nuevas oportunidades</div></div>
       </div>
       <div class="signoff">
-        <strong>Nota</strong><br>
-        Este sitio se construyó a partir de mi hoja de vida y certificados.<br>
-        <strong>Stack</strong><br>
-        HTML · CSS · JS (canvas).<br>
-        <strong>Última actualización</strong><br>
+        <strong>// nota</strong><br>
+        Este sitio se construyó a partir de mi hoja de vida y certificados de 2025–2026.<br>
+        <strong>// stack</strong><br>
+        HTML · CSS · JS (canvas) — listo para desplegar en Vercel o cualquier hosting estático.<br>
+        <strong>// última actualización</strong><br>
         Julio 2026
       </div>
     </div>
@@ -680,6 +817,35 @@
     });
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal, .tl-item').forEach(el => revealObs.observe(el));
+
+  // ── barras de nivel de habilidad: se llenan al entrar en pantalla ──
+  const skillBars = document.querySelectorAll('.skill-bar-fill');
+  const skillObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = entry.target.getAttribute('data-target') || '0';
+        entry.target.style.width = target + '%';
+        skillObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  skillBars.forEach(bar => skillObs.observe(bar));
+
+  // ── carrusel de proyectos académicos ──
+  (function () {
+    const track = document.getElementById('projectsTrack');
+    const prevBtn = document.getElementById('projPrev');
+    const nextBtn = document.getElementById('projNext');
+    if (!track || !prevBtn || !nextBtn) return;
+
+    function scrollByCard(dir) {
+      const card = track.querySelector('.project-card');
+      const step = card ? card.getBoundingClientRect().width + 18 : 300;
+      track.scrollBy({ left: dir * step, behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
+    prevBtn.addEventListener('click', () => scrollByCard(-1));
+    nextBtn.addEventListener('click', () => scrollByCard(1));
+  })();
 
   // ── tilt 3D suave en tarjetas al mover el mouse ──
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
