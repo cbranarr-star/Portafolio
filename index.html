@@ -54,7 +54,7 @@
     { "@type": "EducationalOrganization", "name": "SENA" }
   ],
   "knowsAbout": [
-    "Power BI", "SQL", "Python", "Business Intelligence",
+    "Power BI", "SQL", "Python", "Business Intelligence", "Administración de bases de datos",
     "Infraestructura de redes", "IA generativa", "AWS", "GCP",
     "Ciencia de datos", "KNIME", "Looker Studio", "MongoDB", "GitHub", "GitLab", "ETL"
   ]
@@ -207,6 +207,79 @@
   .diagram-title{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em;}
   .diagram-status{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--signal); display:flex; align-items:center; gap:6px;}
   .diagram-status::before{content:''; width:6px; height:6px; border-radius:50%; background:var(--signal);}
+
+  /* ── hoja de vida animada (reemplaza el diagrama SVG) ── */
+  .cv-card{
+    position:relative; overflow:hidden; border-radius:4px;
+  }
+  .cv-scanner{
+    position:absolute; left:0; right:0; top:0; height:2px; z-index:2;
+    background:linear-gradient(90deg, transparent, var(--signal) 45%, var(--signal) 55%, transparent);
+    box-shadow:0 0 14px 1px rgba(46,90,172,0.55);
+    animation:cv-scan 4.5s ease-in-out infinite;
+  }
+  @keyframes cv-scan{
+    0%{top:0%; opacity:0;}
+    6%{opacity:1;}
+    48%{opacity:1;}
+    52%{top:100%; opacity:1;}
+    58%{opacity:0;}
+    100%{top:0%; opacity:0;}
+  }
+  .cv-header{
+    display:flex; align-items:center; gap:14px;
+    margin-bottom:18px; padding-bottom:16px; border-bottom:1px solid var(--line);
+  }
+  .cv-avatar{
+    width:42px; height:42px; border-radius:50%; flex-shrink:0;
+    background:linear-gradient(135deg, var(--signal), var(--signal-dim));
+    color:#fff; display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:14px;
+  }
+  .cv-header-lines{flex:1;}
+  .cv-line{
+    height:8px; border-radius:4px; margin:7px 0;
+    background:linear-gradient(90deg, var(--panel-2) 25%, #E4EAF5 37%, var(--panel-2) 63%);
+    background-size:400% 100%;
+    animation:cv-shimmer 2.6s ease-in-out infinite;
+  }
+  .cv-header .h-title{height:11px;}
+  @keyframes cv-shimmer{
+    0%{background-position:135% 0;}
+    100%{background-position:-35% 0;}
+  }
+  .w-95{width:95%;} .w-90{width:90%;} .w-85{width:85%;} .w-80{width:80%;}
+  .w-75{width:75%;} .w-70{width:70%;} .w-60{width:60%;} .w-55{width:55%;} .w-40{width:40%;}
+  .cv-section{margin-bottom:16px;}
+  .cv-section:last-child{margin-bottom:0;}
+  .cv-section-label{
+    display:flex; align-items:center; gap:6px; margin-bottom:9px;
+    font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--signal);
+  }
+  .cv-dot{width:5px; height:5px; border-radius:50%; background:var(--signal); flex-shrink:0;}
+  .cv-check{
+    margin-left:auto; color:var(--signal); font-size:11px; opacity:0;
+    animation:cv-check-in 4.5s ease-in-out infinite;
+  }
+  .cv-section:nth-of-type(1) .cv-check{animation-delay:0.2s;}
+  .cv-section:nth-of-type(2) .cv-check{animation-delay:1.4s;}
+  .cv-section:nth-of-type(3) .cv-check{animation-delay:2.6s;}
+  .cv-section:nth-of-type(4) .cv-check{animation-delay:3.6s;}
+  @keyframes cv-check-in{
+    0%{opacity:0; transform:scale(0.6);}
+    4%{opacity:1; transform:scale(1);}
+    90%{opacity:1;}
+    96%{opacity:0;}
+    100%{opacity:0;}
+  }
+  .cv-tags{display:flex; flex-wrap:wrap; gap:7px;}
+  .cv-tag{
+    display:inline-block; height:16px; border-radius:9px;
+    background:linear-gradient(90deg, var(--panel-2) 25%, #E4EAF5 37%, var(--panel-2) 63%);
+    background-size:400% 100%; animation:cv-shimmer 2.6s ease-in-out infinite;
+  }
+  .cv-tag.w1{width:48px;} .cv-tag.w2{width:64px;} .cv-tag.w3{width:56px;}
   svg.topology{width:100%; height:auto; display:block;}
   .topo-line{stroke:var(--signal-dim); stroke-width:1.5; fill:none; stroke-dasharray:6 6; stroke-dashoffset:0; animation:dash 3.5s linear infinite;}
   @keyframes dash{to{stroke-dashoffset:-120;}}
@@ -444,34 +517,47 @@
 
       <div class="diagram-card tilt-card">
         <div class="diagram-head">
-          <div class="diagram-title">Ruta de formación</div>
-          <div class="diagram-status">4/4 completos</div>
+          <div class="diagram-title">Hoja de vida</div>
+          <div class="diagram-status">en vivo</div>
         </div>
-        <svg class="topology" viewBox="0 0 500 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ruta de formación académica: Técnico en Sistemas 2014-2015, Tecnólogo en Gestión de Redes de Datos 2016-2018, Ingeniero en Telecomunicaciones 2021-2023, Especialista en Big Data e BI 2025-2026">
-          <path class="topo-line" d="M50,85 H450" />
+        <div class="cv-card" role="img" aria-label="Vista previa animada de mi hoja de vida: perfil, experiencia, formación y habilidades">
+          <div class="cv-scanner"></div>
 
-          <g class="topo-node active">
-            <circle cx="50" cy="85" r="26"/>
-            <text x="50" y="82" text-anchor="middle">TÉCNICO</text>
-            <text x="50" y="93" text-anchor="middle" class="sub">2014–15</text>
-          </g>
-          <g class="topo-node active">
-            <circle cx="183" cy="85" r="26"/>
-            <text x="183" y="82" text-anchor="middle">TECNÓLOGO</text>
-            <text x="183" y="93" text-anchor="middle" class="sub">2016–18</text>
-          </g>
-          <g class="topo-node active">
-            <circle cx="317" cy="85" r="26"/>
-            <text x="317" y="82" text-anchor="middle">INGENIERO</text>
-            <text x="317" y="93" text-anchor="middle" class="sub">2021–23</text>
-          </g>
-          <g class="topo-node active">
-            <circle cx="450" cy="85" r="26"/>
-            <text x="450" y="82" text-anchor="middle">ESPECIALISTA</text>
-            <text x="450" y="93" text-anchor="middle" class="sub">2025–26</text>
-          </g>
-          <circle class="topo-ping" cx="450" cy="85" r="4"/>
-        </svg>
+          <div class="cv-header">
+            <div class="cv-avatar">CB</div>
+            <div class="cv-header-lines">
+              <div class="cv-line h-title w-60"></div>
+              <div class="cv-line w-40"></div>
+            </div>
+          </div>
+
+          <div class="cv-section">
+            <div class="cv-section-label"><span class="cv-dot"></span>Perfil<span class="cv-check">✓</span></div>
+            <div class="cv-line w-95"></div>
+            <div class="cv-line w-80"></div>
+          </div>
+
+          <div class="cv-section">
+            <div class="cv-section-label"><span class="cv-dot"></span>Experiencia<span class="cv-check">✓</span></div>
+            <div class="cv-line w-90"></div>
+            <div class="cv-line w-70"></div>
+            <div class="cv-line w-85"></div>
+          </div>
+
+          <div class="cv-section">
+            <div class="cv-section-label"><span class="cv-dot"></span>Formación<span class="cv-check">✓</span></div>
+            <div class="cv-line w-55"></div>
+            <div class="cv-line w-75"></div>
+          </div>
+
+          <div class="cv-section">
+            <div class="cv-section-label"><span class="cv-dot"></span>Habilidades<span class="cv-check">✓</span></div>
+            <div class="cv-tags">
+              <span class="cv-tag w1"></span><span class="cv-tag w2"></span>
+              <span class="cv-tag w3"></span><span class="cv-tag w2"></span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -485,6 +571,7 @@
         <p>Soy una persona versátil, capaz de simultanear varias tareas y de adaptarme rápido a entornos nuevos. No llegué a los datos por casualidad: empecé resolviendo incidentes de red en llamada, después sostuve la infraestructura que mantiene los sistemas críticos en pie, y hoy uso ese mismo conocimiento de extremo a extremo para explicar de dónde viene cada cifra que pongo en un tablero — algo que a otros analistas les toma años entender.</p>
         <p>Mi trabajo no termina en "crear un tablero". Lo que resuelvo es más concreto: convertir información dispersa entre bases de datos, autorizaciones y trámites médicos en informes que un auditor, un área financiera o un líder de riesgo en salud pueden usar para la toma de decisiones. Eso implica <strong>optimizar consultas SQL que antes tardaban horas y hoy corren en minutos</strong>, automatizar el cruce de datos en Python cuando el proceso manual ya no escala, y diseñar la visualización final —sea un tablero, un informe operativo o un modelo predictivo— pensando en quién la va a leer, no solo en que se vea bien.</p>
         <p>Me caracteriza la facilidad para el trabajo en equipo y el entusiasmo genuino por seguir aprendiendo. Entre 2025 y 2026 llevé eso a la práctica: completé una especialización en Big Data & BI, formación en AWS e IA con Platzi, y cinco cursos aplicados de inteligencia artificial — desde IA generativa hasta legalidad de datos en publicidad digital — porque entiendo que un tablero bonito sin consultas optimizadas ni automatización detrás tiene un techo bajo.</p>
+        <p>Esa curiosidad no se quedó en los cursos: en mi trabajo de grado apliqué ciencia de datos sobre información real de Metrosalud, documentando todo el proceso —limpieza, análisis y modelado— en un notebook de Python que puedes revisar en la sección de Proyectos académicos. Y no me quedo solo en consultar información: administro directamente las bases de datos MySQL y MariaDB que sostienen mis informes, con permisos, respaldos y mantenimiento incluidos, no solo las consulto desde afuera.</p>
         <div class="now">
           <span class="k">// actualmente</span> — Analista de Inteligencia de Negocios en Savia Salud EPS, optimizando el análisis de datos para entregar informes operativos, descriptivos y predictivos, con SQL avanzado, DAX en Power BI y automatización en Python.
         </div>
@@ -499,6 +586,10 @@
           <div class="skill-item">
             <div class="skill-item-head"><span class="name">SQL (CTEs, stored procedures)</span><span class="level">Avanzado</span></div>
             <div class="skill-bar"><div class="skill-bar-fill" data-target="90"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-item-head"><span class="name">Administración de bases de datos (MySQL/MariaDB)</span><span class="level">Avanzado</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-target="88"></div></div>
           </div>
           <div class="skill-item">
             <div class="skill-item-head"><span class="name">Modelado de datos </span><span class="level">Avanzado</span></div>
@@ -603,8 +694,8 @@
             <div class="skill-bar"><div class="skill-bar-fill" data-target="55"></div></div>
           </div>
           <div class="skill-item">
-            <div class="skill-item-head"><span class="name">Ciencia de datos</span><span class="level">Básico</span></div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-target="50"></div></div>
+            <div class="skill-item-head"><span class="name">Ciencia de datos (proyecto de grado aplicado)</span><span class="level">Intermedio</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-target="68"></div></div>
           </div>
         </div>
       </div>
@@ -1007,7 +1098,7 @@
       <div class="edu-card tilt-card" style="border-top-color:var(--signal);">
         <div class="yr" style="color:var(--signal);">Capa 02</div>
         <h4>Datos & BI</h4>
-        <p class="tl-desc" style="margin-top:10px;">Optimizo el análisis para informes operativos, descriptivos y predictivos: Modelado de datos y ETL avanzado, Power BI (DAX) y Looker Studio, SQL avanzado, Bases de datos NoSQL (MongoDB, SupabaseDB), KNIME, Microsoft Fabric, Python y control de versiones con GitHub/GitLab.</p>
+        <p class="tl-desc" style="margin-top:10px;">Optimizo el análisis para informes operativos, descriptivos y predictivos: Modelado de datos y ETL avanzado, Power BI (DAX) y Looker Studio, SQL avanzado, administración de bases de datos MySQL/MariaDB, bases NoSQL (MongoDB, SupabaseDB), KNIME, Microsoft Fabric, ciencia de datos aplicada, Python y control de versiones con GitHub/GitLab.</p>
       </div>
       <div class="edu-card tilt-card" style="border-top-color:var(--amber);">
         <div class="yr" style="color:var(--amber);">Capa 03</div>
