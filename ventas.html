@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashboard · Ventas por tienda y producto</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dash.css"></head><body><div class="wrap">
+<header class="top"><div><h1>Ventas por tienda y producto · 2023</h1>
+<p>Desempeño comercial de 8 tiendas y 8 productos: ingresos, volumen, ticket promedio, estacionalidad y qué producto o tienda mueve el negocio.</p></div>
+<span class="badge" id="rng"></span></header>
+<section class="kpis" id="kpis" aria-label="Indicadores clave"></section>
+<main class="grid">
+ <article class="card c7"><h2>Ingresos mensuales</h2><p class="sub">Ingreso = cantidad × precio unitario (R$)</p><div class="chart" id="ch1"></div></article>
+ <article class="card c5"><h2>Ingresos por producto</h2><p class="sub">Participación sobre el total · top 4 y resto</p><div class="chart" id="ch2"></div></article>
+ <article class="card c6"><h2>Ingresos por tienda</h2><p class="sub">Ciudad (estado) · con % del total</p><div class="chart" id="ch3"></div></article>
+ <article class="card c6"><h2>Unidades vs. ingreso por producto</h2><p class="sub">El producto más vendido en unidades no es el que más factura</p><div class="legend" id="lg4"></div><div class="chart" id="ch4"></div></article>
+ <article class="card" style="grid-column:span 12"><h2>Lectura rápida</h2><ul class="insights" id="ins"></ul></article>
+</main>
+<p class="note" id="nt"></p></div><script src="dash.js"></script><script>const D={"tot": {"ing": 72861269.75999999, "uds": 194271, "ped": 4761, "precio_prom": 375.04964590700615, "ticket": 15303.774366729676}, "meses": [{"mes": "2023-01", "ing": 7052940.03, "uds": 18276, "ped": 466}, {"mes": "2023-02", "ing": 6339703.81, "uds": 16468, "ped": 424}, {"mes": "2023-03", "ing": 7877337.64, "uds": 19616, "ped": 478}, {"mes": "2023-04", "ing": 7166506.87, "uds": 19296, "ped": 470}, {"mes": "2023-05", "ing": 7240701.63, "uds": 20198, "ped": 484}, {"mes": "2023-06", "ing": 5949406.82, "uds": 18009, "ped": 464}, {"mes": "2023-07", "ing": 5045747.46, "uds": 13734, "ped": 315}, {"mes": "2023-08", "ing": 5740660.35, "uds": 14724, "ped": 329}, {"mes": "2023-09", "ing": 5259928.54, "uds": 14718, "ped": 333}, {"mes": "2023-10", "ing": 5453610.47, "uds": 14306, "ped": 364}, {"mes": "2023-11", "ing": 4488933.66, "uds": 11768, "ped": 313}, {"mes": "2023-12", "ing": 5245792.48, "uds": 13158, "ped": 321}], "prod": [{"prod": 1001, "ing": 3551439.4, "uds": 22060, "ped": 571, "precio": 160.99, "nombre": "Gorra"}, {"prod": 1002, "ing": 7198831.77, "uds": 22483, "ped": 563, "precio": 320.19, "nombre": "Tennis"}, {"prod": 1003, "ing": 12074906.91, "uds": 24189, "ped": 587, "precio": 499.19, "nombre": "Maleta"}, {"prod": 1004, "ing": 5323710.0, "uds": 25351, "ped": 616, "precio": 210.0, "nombre": "Billetera"}, {"prod": 1005, "ing": 22311666.0, "uds": 22334, "ped": 574, "precio": 999.0, "nombre": "Bolso"}, {"prod": 1006, "ing": 3841122.0, "uds": 24158, "ped": 602, "precio": 159.0, "nombre": "Audífonos"}, {"prod": 1007, "ing": 14987274.48, "uds": 23752, "ped": 637, "precio": 630.99, "nombre": "Mochila"}, {"prod": 1008, "ing": 3572319.2, "uds": 29944, "ped": 611, "precio": 119.3, "nombre": "Botella"}], "tiendas": [{"tienda": "A1500107", "ing": 15990616.66, "uds": 41142, "ped": 489, "ciudad": "São Paulo", "uf": "SP"}, {"tienda": "A1500108", "ing": 14063358.42, "uds": 37195, "ped": 721, "ciudad": "Niterói", "uf": "RJ"}, {"tienda": "A1500109", "ing": 8225702.68, "uds": 20563, "ped": 1136, "ciudad": "Curitiba", "uf": "PR"}, {"tienda": "A1500110", "ing": 285162.34, "uds": 804, "ped": 22, "ciudad": "Goiânia", "uf": "GO"}, {"tienda": "A1500111", "ing": 16149706.04, "uds": 47528, "ped": 1008, "ciudad": "São Luís", "uf": "MA"}, {"tienda": "A3100104", "ing": 10060369.88, "uds": 25447, "ped": 745, "ciudad": "Vitória", "uf": "ES"}, {"tienda": "A5200050", "ing": 1837146.58, "uds": 5290, "ped": 158, "ciudad": "Salvador", "uf": "BA"}, {"tienda": "A5200100", "ing": 6249207.16, "uds": 16302, "ped": 482, "ciudad": "Manaus", "uf": "AM"}], "desde": "2023-01-01", "hasta": "2023-12-31", "mejor_dia_ing": 574711.54, "dias": 363, "prod_mes": {"Gorra": [347255.43, 382834.22, 325521.78, 374784.72, 308134.86, 334215.24, 253076.28, 228766.79, 253237.27, 201237.5, 282859.43, 259515.88], "Tennis": [566736.3, 510382.86, 760771.44, 650626.08, 838897.8, 799194.24, 528313.5, 378144.39, 560972.88, 653827.98, 370139.64, 580824.66], "Maleta": [1356299.23, 819669.98, 1232999.3, 1169602.17, 1096720.43, 1257459.61, 666418.65, 1014853.27, 910023.37, 835144.87, 624985.88, 1090730.15], "Billetera": [390810.0, 493500.0, 579180.0, 553770.0, 501480.0, 489930.0, 459690.0, 490140.0, 330120.0, 451290.0, 330330.0, 253470.0], "Bolso": [1951047.0, 2117880.0, 2971026.0, 2120877.0, 1964034.0, 1148850.0, 1730268.0, 2026971.0, 1674324.0, 1688310.0, 1285713.0, 1632366.0], "Audífonos": [275229.0, 400362.0, 389709.0, 394479.0, 382236.0, 412605.0, 305757.0, 236433.0, 247086.0, 333264.0, 229755.0, 234207.0], "Mochila": [1774974.87, 1422882.45, 1323817.02, 1558545.3, 1663289.64, 1146508.83, 868873.23, 1060063.2, 882124.02, 1090350.72, 1198250.01, 997595.19], "Botella": [390588.2, 192192.3, 294313.1, 343822.6, 485908.9, 360643.9, 233350.8, 305288.7, 402041.0, 200185.4, 166900.7, 197083.6]}, "top_prod_mes_meses": ["2023-01", "2023-02", "2023-03", "2023-04", "2023-05", "2023-06", "2023-07", "2023-08", "2023-09", "2023-10", "2023-11", "2023-12"]};
+const col=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const BRL=v=>'R$ '+v.toLocaleString('es-CO',{maximumFractionDigits:0});
+const BM=v=>'R$ '+(v/1e6).toLocaleString('es-CO',{minimumFractionDigits:1,maximumFractionDigits:1})+' M';
+const AX=v=>(v/1e6).toLocaleString('es-CO',{maximumFractionDigits:1})+' M';
+const pc=(a,b,d=1)=>(b?a/b*100:0).toFixed(d).replace('.',',')+'%';
+const N=v=>v.toLocaleString('es-CO');
+const ML=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+const T=D.tot,mes=D.meses;
+document.getElementById('rng').textContent=D.desde+' → '+D.hasta;
+const h1=mes.slice(0,6).reduce((a,m)=>a+m.ing,0),h2=mes.slice(6).reduce((a,m)=>a+m.ing,0),dh=(h2/h1-1)*100;
+const pr=[...D.prod].sort((a,b)=>b.ing-a.ing),ti=[...D.tiendas].sort((a,b)=>b.ing-a.ing);
+const kp=[
+ ['Ingresos totales',BM(T.ing),N(D.dias)+' días con ventas'],
+ ['Unidades vendidas',N(T.uds),N(T.ped)+' pedidos'],
+ ['Ticket promedio por pedido',BRL(T.ticket),'ingreso / pedido'],
+ ['Precio promedio por unidad',BRL(T.precio_prom),'ingreso / unidades'],
+ ['2.º semestre vs. 1.º',(dh>0?'+':'')+dh.toFixed(1).replace('.',',')+'%','<b class="'+(dh<0?'down':'up')+'">'+(dh<0?'▼ caída':'▲ alza')+'</b> en ingresos'],
+ ['Producto líder',pr[0].nombre,pc(pr[0].ing,T.ing,0)+' de los ingresos']
+];
+document.getElementById('kpis').innerHTML=kp.map(k=>'<div class="kpi"><div class="l">'+k[0]+'</div><div class="v">'+k[1]+'</div><div class="s">'+k[2]+'</div></div>').join('');
+const mount=(id,draw,tbl)=>Dash.mount(document.getElementById(id).closest('.card'),draw,tbl);
+const lg=(id,s)=>document.getElementById(id).innerHTML=s.map(x=>'<span><i style="background:'+x.color+'"></i>'+x.name+'</span>').join('');
+function paint(){
+ mount('ch1',h=>Dash.line(h,{cats:ML,series:[{name:'Ingresos',color:col('--s1'),vals:mes.map(m=>m.ing)}],fmt:BM,axisFmt:AX,area:true,title:'Ingresos mensuales'}),
+  h=>Dash.table(h,['Mes','Ingresos','Unidades','Pedidos','Ticket'],mes.map((m,i)=>[ML[i],BRL(m.ing),N(m.uds),N(m.ped),BRL(m.ing/m.ped)])));
+ const top4=pr.slice(0,4),rest=pr.slice(4).reduce((a,p)=>a+p.ing,0);
+ const cats=[...top4.map(p=>p.nombre),'Otros 4 productos'],vals=[...top4.map(p=>p.ing),rest];
+ mount('ch2',h=>Dash.hbars(h,{cats,series:[{name:'Ingresos',color:col('--s1'),vals}],fmt:BM,axisFmt:AX,labelW:120,barH:26,gap:14,total:(i,v)=>pc(v,T.ing,0),title:'Ingresos por producto'}),
+  h=>Dash.table(h,['Producto','Precio','Unidades','Ingresos','% total'],pr.map(p=>[p.nombre,BRL(p.precio),N(p.uds),BRL(p.ing),pc(p.ing,T.ing)])));
+ mount('ch3',h=>Dash.hbars(h,{cats:ti.map(t=>t.ciudad+' ('+t.uf+')'),series:[{name:'Ingresos',color:col('--s3'),vals:ti.map(t=>t.ing)}],fmt:BM,axisFmt:AX,labelW:130,barH:22,gap:12,total:(i,v)=>pc(v,T.ing,0),title:'Ingresos por tienda'}),
+  h=>Dash.table(h,['Tienda','Pedidos','Unidades','Ingresos','Ticket'],ti.map(t=>[t.ciudad+' ('+t.uf+')',N(t.ped),N(t.uds),BRL(t.ing),BRL(t.ing/t.ped)])));
+ const su=[...D.prod].sort((a,b)=>b.uds-a.uds);
+ const sh=x=>x/ T.uds*100,si=x=>x/T.ing*100;
+ const S4=[{name:'% de unidades',color:col('--s2'),vals:su.map(p=>sh(p.uds))},{name:'% de ingresos',color:col('--s1'),vals:su.map(p=>si(p.ing))}];
+ lg('lg4',S4);
+ mount('ch4',h=>Dash.vbars(h,{cats:su.map(p=>p.nombre),series:S4,fmt:v=>v.toFixed(1).replace('.',',')+'%',axisFmt:v=>(v%1?v.toFixed(1).replace('.',','):v)+'%',rot:true,title:'Unidades vs ingresos por producto'}),
+  h=>Dash.table(h,['Producto','Unidades','% unidades','Ingresos','% ingresos'],su.map(p=>[p.nombre,N(p.uds),pc(p.uds,T.uds),BRL(p.ing),pc(p.ing,T.ing)])));
+}
+paint();
+const bm=mes.reduce((a,b)=>b.ing>a.ing?b:a),wm=mes.reduce((a,b)=>b.ing<a.ing?b:a);
+const top2=ti[0].ing+ti[1].ing+ti[2].ing;const lastT=ti[ti.length-1];
+const ticketH1=mes.slice(0,6).reduce((a,m)=>a+m.ing,0)/mes.slice(0,6).reduce((a,m)=>a+m.ped,0),ticketH2=mes.slice(6).reduce((a,m)=>a+m.ing,0)/mes.slice(6).reduce((a,m)=>a+m.ped,0);
+const botella=D.prod.find(p=>p.nombre==='Botella');
+document.getElementById('ins').innerHTML=[
+ 'El <b>Bolso</b> factura <b>'+pc(pr[0].ing,T.ing,0)+'</b> de los ingresos con solo '+pc(pr[0].uds,T.uds,0)+' de las unidades: el precio alto (R$ 999) compensa el menor volumen.',
+ 'Los ingresos pasan de <b>'+BM(h1)+'</b> en el primer semestre a <b>'+BM(h2)+'</b> en el segundo (<b class="down">'+dh.toFixed(1).replace('.',',')+'%</b>). Mejor mes: <b>'+ML[mes.indexOf(bm)]+'</b>; el más flojo: <b>'+ML[mes.indexOf(wm)]+'</b>.',
+ 'La caída viene del <b>volumen de pedidos</b>, no del precio: el ticket promedio pasa de '+BRL(ticketH1)+' a '+BRL(ticketH2)+'.',
+ 'Tres tiendas (<b>'+ti.slice(0,3).map(t=>t.ciudad).join(', ')+'</b>) concentran <b>'+pc(top2,T.ing,0)+'</b> de los ingresos; <b>'+lastT.ciudad+'</b> casi no vende ('+pc(lastT.ing,T.ing,1)+').',
+ 'La <b>Botella</b> es el producto con más unidades ('+pc(botella.uds,T.uds,0)+') y aporta solo '+pc(botella.ing,T.ing,0)+' del ingreso.'
+].map(t=>'<li>'+t+'</li>').join('');
+document.getElementById('nt').innerHTML='<b>Cómo leer este tablero.</b> Ingreso = cantidad × precio unitario del registro de ventas. La moneda no viene en el archivo; se muestra como R$ porque las tiendas están en Brasil. Cada producto tiene un único precio durante el año, por lo que no hay efecto precio en los cambios mensuales.';
+if(matchMedia)matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>location.reload());
+</script></body></html>
