@@ -522,6 +522,12 @@
     92%,98%{transform:translateX(0) scaleX(-1);}
     100%{transform:translateX(0) scaleX(1);}
   }
+
+  .dash-embed{width:100%;border:1px solid var(--line);border-radius:12px;background:#f4f7fb;overflow:hidden}
+  .dash-embed iframe{display:block;width:100%;height:1300px;border:0}
+  .dash-actions{margin-top:20px;display:flex;gap:14px;flex-wrap:wrap}
+  .dash-kpis{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 16px}
+  .dash-kpis span{font:500 12px 'IBM Plex Mono',monospace;color:var(--accent,#2E5AAC);border:1px solid rgba(46,90,172,.25);padding:4px 10px;border-radius:999px;background:rgba(46,90,172,.06)}
 </style>
 </head>
 <body>
@@ -1049,6 +1055,27 @@
     <h2>Dashboards & BI</h2>
     <p class="section-sub">Transformo datos crudos en historias visuales que facilitan la toma de decisiones. Aquí puedes interactuar con algunos de los tableros que he desarrollado.</p>
 
+
+    <div class="dashboard-card tilt-card reveal">
+      <span class="cert-tag" style="margin-bottom: 8px;">Dashboard propio · Finanzas y auditoría</span>
+      <h4>Conciliación de glosas — de lo facturado a lo recuperado</h4>
+      <p>Analicé más de 8.400 facturas en proceso de conciliación con la aseguradora y construí un tablero que muestra cuánto se facturó, cuánto se objetó y cómo se resolvió cada peso: pagado, aceptado por la IPS o ratificado en disputa. Me permite ver la tasa de recuperación por mes, por causal y por aseguradora, y detectar en qué IPS y causales se concentra el valor para priorizar la gestión.</p>
+      <div class="dash-kpis"><span>Facturación vs. glosa</span><span>% recuperación</span><span>Pérdida aceptada</span><span>Causales</span><span>Concentración por IPS</span></div>
+      <div class="dash-embed"><iframe id="dash-conc" src="dashboards/conciliaciones.html" title="Dashboard de conciliación de glosas" loading="lazy"></iframe></div>
+      <div class="dash-actions"><a href="dashboards/conciliaciones.html" target="_blank" rel="noopener" class="btn btn-primary">Abrir en pantalla completa ↗</a></div>
+      <p style="margin-top: 12px; font-size: 12.5px; color: var(--muted);"><em>Datos agregados y anonimizados: sin nombres de IPS, números de factura ni observaciones.</em></p>
+    </div>
+
+    <div class="dashboard-card tilt-card reveal" style="margin-top:24px">
+      <span class="cert-tag" style="margin-bottom: 8px;">Dashboard propio · Análisis comercial</span>
+      <h4>Ventas por tienda y producto — ingresos, ticket y estacionalidad</h4>
+      <p>Con el registro de 4.761 pedidos de 8 tiendas y 8 productos calculé ingresos, unidades, ticket promedio y variación semestral. El tablero revela qué productos sostienen el negocio, qué tiendas concentran las ventas y por qué cayeron los ingresos en el segundo semestre, para orientar decisiones de inventario, precios y foco comercial.</p>
+      <div class="dash-kpis"><span>Ingresos</span><span>Ticket promedio</span><span>Variación semestral</span><span>Mix de productos</span><span>Ranking de tiendas</span></div>
+      <div class="dash-embed"><iframe id="dash-vent" src="dashboards/ventas.html" title="Dashboard de ventas por tienda y producto" loading="lazy"></iframe></div>
+      <div class="dash-actions"><a href="dashboards/ventas.html" target="_blank" rel="noopener" class="btn btn-primary">Abrir en pantalla completa ↗</a></div>
+    </div>
+
+    <div style="height:24px"></div>
     <div class="dashboard-card tilt-card reveal">
       <span class="cert-tag" style="margin-bottom: 8px;">Looker Studio · Análisis de Ventas</span>
       <h4>Ventas en Brasil — Prueba de rendimiento comercial</h4>
@@ -1425,6 +1452,14 @@
     resize();
     raf = requestAnimationFrame(draw);
   })();
+
+  /* Altura automática de los dashboards incrustados */
+  window.addEventListener('message',function(e){
+    if(!e.data||!e.data.dashHeight)return;
+    document.querySelectorAll('.dash-embed iframe').forEach(function(f){
+      if(f.contentWindow===e.source){f.style.height=(e.data.dashHeight+4)+'px';}
+    });
+  });
 </script>
 
 </body>
